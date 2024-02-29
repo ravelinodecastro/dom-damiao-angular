@@ -1,0 +1,15 @@
+<h4>Nome: {{ estudante.nome }}</h4>
+<h4>Data de nascimento: {{ estudante.dataNascimento | date: 'd MMM y' }}</h4>
+<h4>Morada: {{ estudante.morada }}</h4>
+<h4>Turma: {{ estudante.estudanteTurma.turma.nome }}</h4>
+<h4>Media: {{ calcularMedia(estudante.notas) }}</h4>
+<h4>Situação final: {{ situacao(calcularMedia(estudante.notas)) }} </h4>
+<h4 *ngIf="isAprovado">Vai para quadro de honra</h4>
+<h4>Notas</h4>
+<div *ngFor="let nota of estudante.notas">
+    <h6>Disciplina: {{nota.disciplina.descricao}}</h6>
+    <h6>Valor: {{nota.valor}}</h6>
+    <h6>Estado: {{ situacao(nota.valor)}}</h6>
+</div>
+<hr>
+<br>
